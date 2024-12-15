@@ -10,10 +10,7 @@ if __name__ == "__main__":
              .appName("ElectionAnalysis")
              .master("local[*]")  # Use local Spark execution with all available cores
              .config("spark.jars.packages",
-                     "org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.3,"
-                     "org.apache.kafka:kafka-clients:3.9.0,"
-                     "org.apache.spark:spark-token-provider-kafka-0-10_2.12:3.5.3,"
-                     "org.apache.commons:commons-pool2:2.12.0")
+                     "org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.3,")
              # Spark-Kafka integration
              .config("spark.jars",
                      "/Users/mac/PycharmProjects/RealtimeVotingEngineering/postgresql-42.7.4.jar")  # PostgreSQL driver
@@ -52,7 +49,7 @@ if __name__ == "__main__":
 votes_df = spark.readStream\
     .format("kafka")\
     .option("kafka.bootstrap.servers", "localhost:9092")\
-    .option("subscribe", "voters_topic")\
+    .option("subscribe", "votes_topic")\
     .option("startingOffsets", "earliest")\
     .load()\
     .selectExpr("CAST(value AS STRING)")\

@@ -149,6 +149,7 @@ def update_data():
     results = pd.DataFrame(data)
 
     # Identify the leading candidate
+    print(results.head())
     results = results.loc[results.groupby('candidate_id')['total_votes'].idxmax()]
     leading_candidate = results.loc[results['total_votes'].idxmax()]
 

@@ -153,7 +153,7 @@ if __name__ == "__main__":
                 candidate['campaign_platform'], candidate['photo_url']))
             conn.commit()
 
-    for i in range(1000):
+    for i in range(100):
         voter_data = generate_voter_data()
         insert_voters(conn, cur, voter_data)
 
