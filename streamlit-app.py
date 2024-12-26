@@ -158,7 +158,7 @@ def update_data():
     st.header('Leading Candidate')
     col1, col2 = st.columns(2)
     with col1:
-        st.image(leading_candidate['photo_url'], width=200)
+        st.header("With the most votes")
     with col2:
         st.header(leading_candidate['candidate_name'])
         st.subheader(leading_candidate['party_affiliation'])
@@ -198,6 +198,7 @@ def update_data():
 
     # Update the last refresh time
     st.session_state['last_update'] = time.time()
+
 
 # Sidebar layout
 def sidebar():
